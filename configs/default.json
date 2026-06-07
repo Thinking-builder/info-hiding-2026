@@ -1,0 +1,15 @@
+{
+  "demo": {
+    "secret": "secret.png",
+    "target": "target.png",
+    "block": 37,
+    "key": "paper-demo-key",
+    "output": "outputs/demo"
+  },
+  "experiment": {
+    "blocks": [8, 16, 32],
+    "mode": "paper",
+    "dataset": "data/kodak",
+    "output": "outputs/experiment"
+  }
+}
