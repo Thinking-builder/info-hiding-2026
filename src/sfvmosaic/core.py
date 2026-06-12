@@ -11,17 +11,42 @@ import numpy as np
 
 from . import huffman
 from .bits import bits_to_bytes, bytes_to_bits
+from .optimize.block_match import (
+    sort_key_avg_std,
+    sort_key_combined,
+    sort_key_histogram_entropy,
+    sort_key_luminance_std,
+    sort_key_max_channel_std,
+)
+from .optimize.color_transform import (
+    compute_qcode_clamped,
+    compute_qcode_global,
+    compute_qcode_paper,
+)
 
 
 @dataclass
 class MosaicResult:
     image: np.ndarray
     metadata: bytes
-    stats: dict[str, int | float]
+    stats: dict[str, object]
     info: bytes = b""
 
 
 MODES = {"robust", "paper"}
+MATCH_STRATEGIES = {
+    "avg_std": sort_key_avg_std,
+    "luminance_std": sort_key_luminance_std,
+    "entropy": sort_key_histogram_entropy,
+    "max_channel_std": sort_key_max_channel_std,
+    "combined": sort_key_combined,
+}
+Q_STRATEGIES = {
+    "paper": compute_qcode_paper,
+    "global": compute_qcode_global,
+    "clamped": compute_qcode_clamped,
+}
+RESIDUAL_STRATEGIES = {"default", "none"}
 PAPER_INFO_MAGIC = b"SFI1"
 PAPER_INFO_HEADER = struct.Struct(">4sBIIHIBIIIIH")
 
@@ -312,21 +337,35 @@ def _paper_bit_stats(
 
 
 def create_mosaic(
-    secret: np.ndarray, target: np.ndarray, block: int, mode: str = "robust"
+    secret: np.ndarray,
+    target: np.ndarray,
+    block: int,
+    mode: str = "robust",
+    match_strategy: str = "avg_std",
+    q_strategy: str = "paper",
+    use_rotation: bool = True,
+    residual_strategy: str = "default",
 ) -> MosaicResult:
     _validate(secret, target, block)
     if mode not in MODES:
         raise ValueError(f"unsupported mode: {mode}")
+    if match_strategy not in MATCH_STRATEGIES:
+        raise ValueError(f"unsupported match strategy: {match_strategy}")
+    if q_strategy not in Q_STRATEGIES:
+        raise ValueError(f"unsupported q strategy: {q_strategy}")
+    if residual_strategy not in RESIDUAL_STRATEGIES:
+        raise ValueError(f"unsupported residual strategy: {residual_strategy}")
     secret = secret.astype(np.uint8)
     target = target.astype(np.uint8)
     secret_blocks, target_blocks = _blocks(secret, block), _blocks(target, block)
+    match_key = MATCH_STRATEGIES[match_strategy]
     secret_order = sorted(
         range(len(secret_blocks)),
-        key=lambda i: (float(secret_blocks[i].std(axis=(0, 1)).mean()), i),
+        key=lambda i: (match_key(secret_blocks[i]), i),
     )
     target_order = sorted(
         range(len(target_blocks)),
-        key=lambda i: (float(target_blocks[i].std(axis=(0, 1)).mean()), i),
+        key=lambda i: (match_key(target_blocks[i]), i),
     )
     mapping = dict(zip(secret_order, target_order))
     output_blocks: list[np.ndarray | None] = [None] * len(target_blocks)
@@ -342,13 +381,7 @@ def create_mosaic(
         target_mean = np.rint(destination.mean(axis=(0, 1))).astype(int)
         source_std = source.std(axis=(0, 1))
         target_std = destination.std(axis=(0, 1))
-        quotient = np.divide(
-            target_std,
-            source_std,
-            out=np.full(3, 0.1),
-            where=source_std > 1e-12,
-        )
-        qcode = np.clip(np.rint(quotient * 10), 1, 128).astype(int)
+        qcode = Q_STRATEGIES[q_strategy](source_std, target_std)
         q = qcode / 10.0
         transformed_real = q * (source - source_mean) + target_mean
         raw = np.trunc(transformed_real)
@@ -357,7 +390,9 @@ def create_mosaic(
         paper_residuals = _paper_residual_symbols(
             source_u8, source_mean, target_mean, q, converted
         )
-        if mode == "paper":
+        if residual_strategy == "none":
+            tile_residuals = []
+        elif mode == "paper":
             tile_residuals = paper_residuals
         else:
             tile_residuals = []
@@ -368,7 +403,8 @@ def create_mosaic(
                 tile_residuals.extend(source_channel[boundary].tolist())
 
         best_rmse, best_rotation, best_tile = None, 0, converted
-        for rotation in range(4):
+        rotations = range(4) if use_rotation else range(1)
+        for rotation in rotations:
             candidate = np.rot90(converted, rotation)
             error = float(np.sqrt(np.mean((candidate.astype(float) - destination) ** 2)))
             if best_rmse is None or error < best_rmse:
@@ -398,6 +434,10 @@ def create_mosaic(
         "width": secret.shape[1],
         "block": block,
         "mode": mode,
+        "match_strategy": match_strategy,
+        "q_strategy": q_strategy,
+        "use_rotation": use_rotation,
+        "residual_strategy": residual_strategy,
         "records": records,
     }
     if mode == "paper":
@@ -416,6 +456,10 @@ def create_mosaic(
             "blocks": len(records),
             "residual_values": len(all_residuals),
             "metadata_bytes": len(metadata),
+            "match_strategy": match_strategy,
+            "q_strategy": q_strategy,
+            "use_rotation": use_rotation,
+            "residual_strategy": residual_strategy,
             **paper_stats,
         },
         info,

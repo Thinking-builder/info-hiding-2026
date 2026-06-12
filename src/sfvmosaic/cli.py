@@ -5,8 +5,10 @@ import json
 
 from .api import hide, reveal
 from .collect import collect
+from .eval_suite import run_eval_suite
 from .experiment import demo, run_pairs, run_trends
 from .io import load_rgb, save_rgb
+from .report_plots import make_report_plots
 
 
 def main() -> None:
@@ -41,6 +43,18 @@ def main() -> None:
     p.add_argument("--pairs-dataset")
     p.add_argument("--mode", choices=("robust", "paper"), default="paper")
     p.add_argument("--embedded", action="store_true")
+    p = commands.add_parser("eval-suite")
+    p.add_argument("--secret", default="secret.png")
+    p.add_argument("--target", default="target.png")
+    p.add_argument("--output", default="outputs/eval_suite")
+    p.add_argument("--blocks", default="37")
+    p.add_argument("--key", default="eval-suite-key")
+    p.add_argument("--no-embedded", action="store_true")
+    p.add_argument("--seed", type=int, default=0)
+    p = commands.add_parser("plot-report")
+    p.add_argument("--experiment-dir", default="outputs/experiment")
+    p.add_argument("--eval-dir", default="outputs/eval_suite")
+    p.add_argument("--output", default="outputs/report_figures")
     args = parser.parse_args()
 
     if args.command == "hide":
@@ -57,6 +71,14 @@ def main() -> None:
         print(
             json.dumps(
                 demo(args.secret, args.target, args.output, args.block, args.key, args.mode),
+                indent=2,
+            )
+        )
+    elif args.command == "plot-report":
+        print(
+            json.dumps(
+                make_report_plots(args.experiment_dir, args.eval_dir, args.output),
+                ensure_ascii=False,
                 indent=2,
             )
         )
@@ -84,6 +106,22 @@ def main() -> None:
                 )
             )
         print(json.dumps(result, indent=2))
+    elif args.command == "eval-suite":
+        print(
+            json.dumps(
+                run_eval_suite(
+                    args.secret,
+                    args.target,
+                    args.output,
+                    [int(value) for value in args.blocks.split(",")],
+                    embedded=not args.no_embedded,
+                    key=args.key,
+                    seed=args.seed,
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
 
 
 if __name__ == "__main__":

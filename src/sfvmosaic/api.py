@@ -58,8 +58,12 @@ def reveal(mosaic: np.ndarray, key: str) -> tuple[np.ndarray, dict]:
 
 
 def core_roundtrip(
-    secret: np.ndarray, target: np.ndarray, block: int, mode: str = "robust"
+    secret: np.ndarray,
+    target: np.ndarray,
+    block: int,
+    mode: str = "robust",
+    **mosaic_options: object,
 ) -> tuple[MosaicResult, np.ndarray]:
     target = resize_to_shape(target, secret.shape[:2])
-    result = create_mosaic(secret, target, block, mode=mode)
+    result = create_mosaic(secret, target, block, mode=mode, **mosaic_options)
     return result, recover_secret(result.image, result.metadata, result.info)
