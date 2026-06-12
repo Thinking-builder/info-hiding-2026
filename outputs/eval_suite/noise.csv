@@ -1,0 +1,64 @@
+block,carrier_mae,carrier_mssim,carrier_psnr,carrier_rmse,error,match_strategy,mode,noise,noise_kind,noise_level,q_strategy,recovered_pixel_error_rate,recovered_secret_mae,recovered_secret_mssim,recovered_secret_psnr,recovered_secret_rmse,residual_strategy,status,use_rotation,variant
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,paper,0.36346481616751886,0.13300969888807726,0.9999276094885966,56.8556842493297,0.36623172955628497,default,ok,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,True,paper_baseline
+37,,,,,list index out of range,avg_std,paper,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,True,paper_baseline
+37,0.0,1.0,inf,0.0,,avg_std,robust,none,none,0.0,paper,0.3621408570732895,0.1318937180423667,0.9999303241754589,56.92856249813629,0.36317174730747803,default,ok,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 2 input values to the 3 output values where the mask is true,avg_std,robust,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 2 input values to the 6 output values where the mask is true,avg_std,robust,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 0 input values to the 2 output values where the mask is true,avg_std,robust,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 2 input values to the 9 output values where the mask is true,avg_std,robust,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 2 input values to the 16 output values where the mask is true,avg_std,robust,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,True,robust_baseline
+37,,,,,NumPy boolean array indexing assignment cannot assign 2 input values to the 9 output values where the mask is true,avg_std,robust,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,True,robust_baseline
+37,0.0,1.0,inf,0.0,,luminance_std,paper,none,none,0.0,paper,0.38770696372047725,0.14749208668127586,0.9999196057362754,56.40919395440662,0.3855498004780299,default,ok,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,True,match_luminance
+37,,,,,list index out of range,luminance_std,paper,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,True,match_luminance
+37,0.0,1.0,inf,0.0,,entropy,paper,none,none,0.0,paper,0.3907353299245191,0.14807544030517003,0.999923794912398,56.395728365720494,0.38614797540263784,default,ok,True,match_entropy
+37,,,,,list index out of range,entropy,paper,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,True,match_entropy
+37,,,,,list index out of range,entropy,paper,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,True,match_entropy
+37,,,,,list index out of range,entropy,paper,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,True,match_entropy
+37,,,,,list index out of range,entropy,paper,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,True,match_entropy
+37,,,,,list index out of range,entropy,paper,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,True,match_entropy
+37,,,,,list index out of range,entropy,paper,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,True,match_entropy
+37,0.0,1.0,inf,0.0,,max_channel_std,paper,none,none,0.0,paper,0.38344594594594594,0.14663481048616184,0.9999209364751304,56.43550545289946,0.38438365122865514,default,ok,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,True,match_max_channel
+37,,,,,list index out of range,max_channel_std,paper,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,True,match_max_channel
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,global,0.1662862186510835,0.06953067932797663,0.9999451964886088,59.56875069034538,0.26798016236556677,default,ok,True,q_global
+37,,,,,list index out of range,avg_std,paper,gaussian_2,gaussian,2.0,global,,,,,,default,failed,True,q_global
+37,,,,,list index out of range,avg_std,paper,gaussian_5,gaussian,5.0,global,,,,,,default,failed,True,q_global
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,global,,,,,,default,failed,True,q_global
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,global,,,,,,default,failed,True,q_global
+37,,,,,list index out of range,avg_std,paper,jpeg_95,jpeg,95.0,global,,,,,,default,failed,True,q_global
+37,,,,,list index out of range,avg_std,paper,jpeg_85,jpeg,85.0,global,,,,,,default,failed,True,q_global
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,clamped,0.36344959824689554,0.1329792630468306,0.9999284367126218,56.857655701522745,0.36614861470623444,default,ok,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,gaussian_2,gaussian,2.0,clamped,,,,,,default,failed,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,gaussian_5,gaussian,5.0,clamped,,,,,,default,failed,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,clamped,,,,,,default,failed,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,clamped,,,,,,default,failed,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,jpeg_95,jpeg,95.0,clamped,,,,,,default,failed,True,q_clamped
+37,,,,,list index out of range,avg_std,paper,jpeg_85,jpeg,85.0,clamped,,,,,,default,failed,True,q_clamped
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,paper,0.36346481616751886,0.13300969888807726,0.9999276094885966,56.8556842493297,0.36623172955628497,default,ok,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,gaussian_2,gaussian,2.0,paper,,,,,,default,failed,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,gaussian_5,gaussian,5.0,paper,,,,,,default,failed,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,,,,,,default,failed,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,,,,,,default,failed,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,jpeg_95,jpeg,95.0,paper,,,,,,default,failed,False,ablate_rotation
+37,,,,,list index out of range,avg_std,paper,jpeg_85,jpeg,85.0,paper,,,,,,default,failed,False,ablate_rotation
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,paper,0.40087046505965424,0.4354405080756432,0.9907864488175113,38.561411776889365,3.00932845447886,none,ok,True,ablate_boundary_residual
+37,1.5568592240889538,0.9975301114727215,42.08570375487536,2.0056492833910133,,avg_std,paper,gaussian_2,gaussian,2.0,paper,0.9596268565863161,1.327875172469767,0.988245228646891,37.53182857860101,3.3880417352465932,none,ok,True,ablate_boundary_residual
+37,3.924316208099992,0.9852490329043575,34.20657417672634,4.968341867000889,,avg_std,paper,gaussian_5,gaussian,5.0,paper,0.9960433406379352,2.8424235045856667,0.9780932607855237,34.69862317607763,4.694712716413201,none,ok,True,ablate_boundary_residual
+37,0.14777108189270352,0.9847982742009298,34.31063190316816,4.909175806761894,,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,0.4016617969320672,0.5151367583800016,0.9815856659373475,35.616072563463,4.224122966540875,none,ok,True,ablate_boundary_residual
+37,0.6182229526824121,0.9450559881130177,28.243423132568157,9.871178920543862,,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,0.40402057462868274,0.7793198604009415,0.9556640004693988,31.330014853708334,6.918937980923442,none,ok,True,ablate_boundary_residual
+37,4.70610644428212,0.9774585493369865,31.246472577489868,6.985806493938201,,avg_std,paper,jpeg_95,jpeg,95.0,paper,0.9913257852447042,3.205015826637448,0.9705209607652413,33.461007844041,5.413645183773815,none,ok,True,ablate_boundary_residual
+37,6.476143373102833,0.9592230230934867,28.695506633099264,9.370544960465178,,avg_std,paper,jpeg_85,jpeg,85.0,paper,0.995708546384222,4.2987886535183835,0.9554685381457588,31.57095427314717,6.729649830079135,none,ok,True,ablate_boundary_residual

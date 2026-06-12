@@ -1,0 +1,79 @@
+{
+  "block": 37,
+  "mode": "paper",
+  "shape": [
+    296,
+    222,
+    3
+  ],
+  "core_mosaic_target_rmse": 45.60811778445009,
+  "core_mosaic_target_mssim": 0.25513627089450513,
+  "core_recovered_secret_rmse": 0.36623172955628497,
+  "core_blocks": 48,
+  "core_residual_values": 4519,
+  "core_metadata_bytes": 3409,
+  "core_paper_protocol": true,
+  "core_paper_index_bits_per_block": 6,
+  "core_paper_fixed_recovery_bits": 3696,
+  "core_paper_residual_huffman_bits": 23572,
+  "core_paper_mt_bits": 27268,
+  "core_paper_i_bits": 2608,
+  "core_paper_total_recovery_bits": 29876,
+  "core_paper_total_recovery_bits_estimate": 29876,
+  "self_contained": true,
+  "embedded_mosaic_target_rmse": 53.505561315748615,
+  "embedded_mosaic_target_mssim": 0.20137308059295764,
+  "recovered_secret_rmse": 0.36623172955628497,
+  "wrong_key_rejected": true,
+  "hide_stats": {
+    "core": {
+      "blocks": 48,
+      "residual_values": 4519,
+      "metadata_bytes": 3409,
+      "paper_protocol": true,
+      "paper_index_bits_per_block": 6,
+      "paper_fixed_recovery_bits": 3696,
+      "paper_residual_huffman_bits": 23572,
+      "paper_mt_bits": 27268,
+      "paper_i_bits": 2608,
+      "paper_total_recovery_bits": 29876,
+      "paper_total_recovery_bits_estimate": 29876,
+      "rcm_mt_used_pairs": 36221,
+      "rcm_i_used_pairs": 26491
+    },
+    "rcm": {
+      "mt": {
+        "pairs": 98568,
+        "slots": 90067,
+        "saved_lsb_bits": 8501,
+        "payload_bits": 27720,
+        "used_pair_count": 36221,
+        "unused_slots": 53846
+      },
+      "i": {
+        "pairs": 98568,
+        "slots": 74781,
+        "saved_lsb_bits": 23787,
+        "payload_bits": 2704,
+        "used_pair_count": 26491,
+        "unused_slots": 48290
+      }
+    }
+  },
+  "extract_stats": {
+    "rcm": {
+      "mt": {
+        "slots": 90067,
+        "saved_lsb_bits": 8501,
+        "payload_bits": 27720,
+        "used_pair_count": 36221
+      },
+      "i": {
+        "slots": 74781,
+        "saved_lsb_bits": 23787,
+        "payload_bits": 2704,
+        "used_pair_count": 26491
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+block,carrier_mae,carrier_mssim,carrier_psnr,carrier_rmse,error,match_strategy,mode,noise,noise_kind,noise_level,q_strategy,rcm_payload_bits,recovered_pixel_error_rate,recovered_secret_mae,recovered_secret_mssim,recovered_secret_psnr,recovered_secret_rmse,residual_strategy,status,use_rotation,variant
+37,0.0,1.0,inf,0.0,,avg_std,paper,none,none,0.0,paper,30424,0.36346481616751886,0.13300969888807726,0.9999276094885966,56.8556842493297,0.36623172955628497,default,ok,True,paper_baseline
+37,,,,,invalid embedded RCM frame,avg_std,paper,gaussian_2,gaussian,2.0,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,,,,,invalid embedded RCM frame,avg_std,paper,gaussian_5,gaussian,5.0,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,,,,,embedded frame is truncated or corrupt,avg_std,paper,salt_pepper_0.001,salt_pepper,0.001,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,,,,,embedded frame is truncated or corrupt,avg_std,paper,salt_pepper_0.005,salt_pepper,0.005,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,,,,,invalid embedded RCM frame,avg_std,paper,jpeg_95,jpeg,95.0,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,,,,,invalid embedded RCM frame,avg_std,paper,jpeg_85,jpeg,85.0,paper,30424,,,,,,default,extract_failed,True,paper_baseline
+37,0.0,1.0,inf,0.0,,avg_std,robust,none,none,0.0,paper,53392,0.3621408570732895,0.1318937180423667,0.9999303241754589,56.92856249813629,0.36317174730747803,default,ok,True,robust_baseline
+37,,,,,invalid embedded RCM frame,avg_std,robust,gaussian_2,gaussian,2.0,paper,53392,,,,,,default,extract_failed,True,robust_baseline
+37,,,,,invalid embedded RCM frame,avg_std,robust,gaussian_5,gaussian,5.0,paper,53392,,,,,,default,extract_failed,True,robust_baseline
+37,,,,,embedded frame is truncated or corrupt,avg_std,robust,salt_pepper_0.001,salt_pepper,0.001,paper,53392,,,,,,default,extract_failed,True,robust_baseline
+37,,,,,embedded frame is truncated or corrupt,avg_std,robust,salt_pepper_0.005,salt_pepper,0.005,paper,53392,,,,,,default,extract_failed,True,robust_baseline
+37,,,,,invalid embedded RCM frame,avg_std,robust,jpeg_95,jpeg,95.0,paper,53392,,,,,,default,extract_failed,True,robust_baseline
+37,,,,,invalid embedded RCM frame,avg_std,robust,jpeg_85,jpeg,85.0,paper,53392,,,,,,default,extract_failed,True,robust_baseline
